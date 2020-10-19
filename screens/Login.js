@@ -2,6 +2,7 @@ import React from 'react';
 import { AsyncStorage, Text, TextInput, View, Alert, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-paper';
 import { styles, buttonStyles, inputStyles } from '../styles'
+import LoginContext from '../contexts/LoginContext'
 
 
 export default class Login extends React.Component {
@@ -18,8 +19,15 @@ export default class Login extends React.Component {
     const { username, password } = this.state
 
     let url = "http://localhost:8080/auth/login?username="+username+"&password="+password
+
+    //just for testing page navigation without backend support
+    await AsyncStorage.setItem('userToken', 'token');
+    await AsyncStorage.setItem('userObject', 'data');
+
+    this.props.navigation.navigate('App');
   
-    try {
+    //todo
+    /*try {
       const response =  await fetch(url, {method: 'POST'})
       
       if (response.status === 200) {
@@ -35,7 +43,7 @@ export default class Login extends React.Component {
 
     } catch (error) {
       console.log("Error: ", error);
-    }
+    }*/
   }
 
   render() {
@@ -68,7 +76,7 @@ export default class Login extends React.Component {
             Don't have an account? 
           </Text>
           <TouchableOpacity onPress={() => this.props.navigation.navigate('SignUp')}>
-            <Text> Sign up here</Text>
+            <Text style={{color: '#6221ea', marginTop: 10}}> Sign up here</Text>
           </TouchableOpacity>
         </View>
       </View>

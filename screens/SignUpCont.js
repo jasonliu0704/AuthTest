@@ -5,7 +5,7 @@ import { styles, buttonStyles, inputStyles } from '../styles'
 import * as ImagePicker from 'expo-image-picker';
 import Constants from 'expo-constants';
 import * as Permissions from 'expo-permissions';
-import * as s3 from '../s3Utils'
+//import * as s3 from '../s3Utils'
 
 export default class SignUp extends React.Component {
   constructor(props) {
@@ -68,7 +68,8 @@ export default class SignUp extends React.Component {
 
         await AsyncStorage.setItem('userToken', response.headers.map.authorization);
         await AsyncStorage.setItem('userObject', JSON.stringify(userData));
-        await s3.uploadImage(this.state.profileUri, userData.ID)
+        //todo
+        //await s3.uploadImage(this.state.profileUri, userData.ID)
 
         this.props.navigation.navigate('App');
       } else {

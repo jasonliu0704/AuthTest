@@ -70,7 +70,7 @@ export default class SignUp extends React.Component {
             Already has an account? 
           </Text>
           <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
-            <Text> Back to login</Text>
+            <Text style={{color: '#6221ea', marginTop: 10}}> Back to login</Text>
           </TouchableOpacity>
         </View>
       </View>
