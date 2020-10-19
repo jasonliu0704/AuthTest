@@ -1,13 +1,13 @@
 import React from 'react';
-import { AsyncStorage, View, ActivityIndicator, StyleSheet } from 'react-native'
+import { AsyncStorage, View, ActivityIndicator, StyleSheet, Text } from 'react-native'
 
 
-export default class App extends React.Component {
+export default class Chat extends React.Component {
   componentDidMount() {
     this.authCheck();
   }
 
-  authCheck = async () => {
+   authCheck = async () => {
     const userToken = await AsyncStorage.getItem('userToken');
     this.props.navigation.navigate(userToken ? 'App' : 'Auth');
   };
@@ -15,9 +15,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View>
-          <ActivityIndicator size="large"/>
-        </View>
+        <Text>Chat screen</Text>
       </View>
     )
   }
